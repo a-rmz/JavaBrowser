@@ -9,12 +9,16 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
@@ -51,10 +55,18 @@ public class BrowserController implements Initializable{
     }
     
     public void search(ActionEvent event) {
-    	String direccion = tfDirecciones.getText();
-    	if(tfDirecciones.getText() != "") {
-    		engine.load("http://" + direccion);
-    	}    	
+        if (event.getEventType().equals(ActionEvent.ACTION) &&
+            (event.getTarget().equals(btnSearch) || event.getTarget().equals(tfDirecciones))
+        ) {
+            String direccion = tfDirecciones.getText();
+            if (!direccion.isEmpty()) {
+                if (!direccion.startsWith("http://") && !direccion.startsWith("https://")) {
+                    direccion = "http://" + direccion;
+                    tfDirecciones.setText(direccion);
+                }
+                engine.load(direccion);
+            }
+    	}
     }
 
 	@Override

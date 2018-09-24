@@ -3,6 +3,10 @@
 # Project-specific files
 *.iml
 .idea/
+.classpath
+.project
+build.fxbuild
 
 # IntelliJ
 out/
+/bin/

@@ -1,34 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.web.WebView?>
 
-<BorderPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.iteso.pae.browser.BrowserController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.iteso.pae.browser.BrowserController">
    <center>
-      <WebView prefHeight="496.0" prefWidth="923.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="600.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <children>
+            <WebView id="wbWebView" fx:id="wbWebView" layoutY="45.0" prefHeight="555.0" />
+            <Button id="btnPrevious" fx:id="btnPrevious" layoutX="29.0" layoutY="6.0" mnemonicParsing="false" onAction="#previous" text="Previous" />
+            <Button id="btnNext" fx:id="btnNext" disable="true" layoutX="118.0" layoutY="6.0" mnemonicParsing="false" onAction="#next" text="Next" />
+            <TextField id="tfDirecciones" fx:id="tfDirecciones" layoutX="391.0" layoutY="6.0" prefHeight="31.0" prefWidth="317.0" />
+            <Button id="btnSearch" fx:id="btnSearch" layoutX="721.0" layoutY="6.0" mnemonicParsing="false" onAction="#search" text="Search" />
+            <ChoiceBox id="cbHistorial" fx:id="cbHistorial" layoutX="230.0" layoutY="6.0" prefWidth="150.0" />
+         </children>
+      </AnchorPane>
    </center>
-   <top>
-      <MenuBar BorderPane.alignment="CENTER">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem id="menuItemClose" mnemonicParsing="false" onAction="#close" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </top>
 </BorderPane>
